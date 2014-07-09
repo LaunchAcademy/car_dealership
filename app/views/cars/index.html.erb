@@ -1,0 +1,17 @@
+<h1>Cars</h1>
+
+<%= link_to "List a car", new_car_listing_path %>
+
+<% @cars.each do |car| %>
+  <h3><%= car.name %></h3>
+
+  <% if car.car_listings.any? %>
+    <ul>
+      <% car.car_listings.each do |car_listing| %>
+        <li><%= "#{car_listing.dealership.name} - $#{car_listing.price}" %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There aren't any listings yet.</p>
+  <% end %>
+<% end %>
